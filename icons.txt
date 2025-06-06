@@ -1,0 +1,17 @@
+trofeu: import { BsTrophy } from "react-icons/bs";
+chapeu: import { LiaHatCowboySolid } from "react-icons/lia";
+signout: import { LiaSignOutAltSolid } from "react-icons/lia";
+sair: import { PiPowerLight } from "react-icons/pi";
+dashboard: import { RxDashboard } from "react-icons/rx";
+arrowback: import { IoIosArrowRoundBack } from "react-icons/io";
+search: import { CiSearch } from "react-icons/ci";
+eye: import { IoEyeOutline } from "react-icons/io5";
+upload: import { MdOutlineFileUpload } from "react-icons/md";
+calendarInput: import { LuCalendarDays } from "react-icons/lu";
+trash: import { FaRegTrashAlt } from "react-icons/fa";
+pencil: import { LuPencil } from "react-icons/lu";
+add: import { IoIosAdd } from "react-icons/io";
+dots: import { HiOutlineDotsVertical } from "react-icons/hi";
+
+ativo: import { IoCheckmarkCircleOutline } from "react-icons/io5";
+inativo: import { IoCloseCircleOutline } from "react-icons/io5";
