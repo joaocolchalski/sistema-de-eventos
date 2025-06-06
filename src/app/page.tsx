@@ -15,11 +15,27 @@ export default function Home() {
                 />
 
                 <form action="">
-                    <label htmlFor="">Email</label>
-                    <input type="text" />
+                    <label htmlFor="email" className={styles.labelInput}>
+                        Email
+                    </label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Digite aqui"
+                        className={styles.input}
+                    />
 
-                    <label htmlFor="">Senha</label>
-                    <input type="text" />
+                    <label htmlFor="password" className={styles.labelInput}>
+                        Senha
+                    </label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Digite aqui"
+                        className={styles.input}
+                    />
                 </form>
             </main>
         </div>
