@@ -7,10 +7,24 @@ import { Loader } from './components/Loader';
 import { useFormStatus } from 'react-dom';
 import { IoEyeOutline } from 'react-icons/io5';
 import { useState } from 'react';
+import { toast } from 'sonner';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
     const { pending } = useFormStatus();
     const [typeInputPassword, setTypeInputPassword] = useState('password');
+
+    function handleLogin(formData: FormData) {
+        const email = formData.get('email') as string;
+        const password = formData.get('password') as string;
+
+        if (email.trim().length === 0 || password.trim().length === 0) {
+            toast.warning('Preencha todos os campos!');
+            return;
+        }
+
+        redirect('/home/eventos');
+    }
 
     function modifyTypeInputPassword() {
         typeInputPassword === 'password'
@@ -35,7 +49,7 @@ export default function Home() {
                         Entre com sua conta para acessar o painel.
                     </span>
 
-                    <form action="">
+                    <form action={handleLogin}>
                         <section className={styles.inputContainer}>
                             <label
                                 htmlFor="email"

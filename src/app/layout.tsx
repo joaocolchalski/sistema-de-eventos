@@ -1,28 +1,30 @@
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import "./globals.scss";
+import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
+import './globals.scss';
+import { Toaster } from 'sonner';
 
 const roboto = Roboto({
-  weight: ["400", "700"],
-  subsets: ["latin"],
+    weight: ['400', '700'],
+    subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Login - Tropa Digital",
-  description: "Plataforma de Eventos da Tropa Digital",
-  icons: {
-    icon: "/logo.svg",
-  },
+    title: 'Login - Tropa Digital',
+    description: 'Plataforma de Eventos da Tropa Digital',
+    icons: {
+        icon: '/logo.svg',
+    },
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={roboto.className}>{children}</body>
-    </html>
-  );
+    return (
+        <html lang="pt-BR">
+            <Toaster position="top-right" richColors />
+            <body className={roboto.className}>{children}</body>
+        </html>
+    );
 }
