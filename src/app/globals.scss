@@ -6,27 +6,19 @@
 }
 
 :root {
-    --white-400: #f8f8f8;
+    --white-900: #ffffff;
     --white-600: #f6f6f6;
-    --white-900: #fff;
     --orange: #cc6237;
-    --lightorange: #fea501;
-    --red: #ed3338;
-    --green: #3ab600;
     --gray: #657593;
-    --gray-400: #ececee;
+    --blue: #2a4d8e;
 }
 
 body {
-    background: var(--gray-400);
+    background: #f9fbff;
 }
 
-body,
-input,
-textarea,
-select,
 button {
-    font-weight: 400;
+    cursor: pointer;
 }
 
 a {
