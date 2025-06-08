@@ -18,7 +18,7 @@ export default function HomeLayout({
     return (
         <main className={styles.layoutContainer}>
             <Sidebar />
-            {children}
+            <div className={styles.contentContainer}>{children}</div>
         </main>
     );
 }

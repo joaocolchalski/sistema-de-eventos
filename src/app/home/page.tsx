@@ -1,7 +1,9 @@
+import TitlePage from './components/TitlePage';
+
 export default function Dashboard() {
     return (
         <main>
-            <h1>Página Dashboard</h1>
+            <TitlePage name="Dashboard" />
         </main>
     );
 }

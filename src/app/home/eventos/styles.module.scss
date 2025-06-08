@@ -1,0 +1,86 @@
+.greetingContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 13px;
+}
+
+.greetingText {
+    font-size: 16px;
+}
+
+.eventsContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-900);
+    border: 1px solid rgba(#09428f, 0.17);
+    border-radius: 10px;
+    padding: 20px;
+    gap: 10px;
+}
+
+.searchAndAddEventContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+}
+
+.inputSearchContainer {
+    position: relative;
+}
+
+.inputSearch {
+    background-color: var(--white-600);
+    border-radius: 33px;
+    border: 0;
+    font-size: 14px;
+    padding: 10px 15px 10px 41px;
+    color: var(--orange);
+    transition: box-shadow 0.2s ease-in-out;
+
+    &::placeholder {
+        color: rgba($color: #000000, $alpha: 0.2);
+        font-weight: 600;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px var(--orange);
+    }
+}
+
+.buttonSearch {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: rgba($color: #000000, $alpha: 0.2);
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: rgba($color: #000000, $alpha: 1);
+    }
+}
+
+.buttonAddEvent {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    color: var(--white-900);
+    background-color: var(--orange);
+    border: 0;
+    border-radius: 33px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}

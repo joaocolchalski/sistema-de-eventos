@@ -4,7 +4,7 @@ import './globals.scss';
 import { Toaster } from 'sonner';
 
 const roboto = Roboto({
-    weight: ['400', '700'],
+    weight: ['400', '500', '600', '700'],
     subsets: ['latin'],
 });
 

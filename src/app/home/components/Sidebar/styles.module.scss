@@ -4,7 +4,7 @@
     width: 210px;
     padding-top: 30px;
     background-color: var(--white-900);
-    border-right: 2px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(#000000, 0.1);
 }
 
 .logo {
@@ -33,20 +33,97 @@
         align-items: center;
         padding: 10px;
         gap: 10px;
-        transition: background-color 0.2s ease-in-out;
         border-radius: 5px;
         font-size: 14px;
-        font-weight: 500;
-        color: red;
+        font-weight: 600;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
         &:hover {
             background-color: var(--orange);
-            border-radius: 5px;
             color: var(--white-900);
-
-            img {
-                color: var(--white-900);
-            }
         }
     }
+}
+
+.actualRoute {
+    background-color: var(--orange);
+    color: var(--white-900);
+}
+
+.divider {
+    width: auto;
+    height: 1px;
+    background-color: rgba(#000000, 0.1);
+    margin: 8px 25px;
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 25px;
+    gap: 5px;
+
+    a {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: var(--orange);
+            color: var(--white-900);
+        }
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        border: 0;
+        background-color: transparent;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: var(--orange);
+            color: var(--white-900);
+        }
+    }
+}
+
+.infosUserContainer {
+    display: flex;
+    gap: 10px;
+    padding: 1px;
+}
+
+.imageUser {
+    width: 40px;
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid var(--white-900);
+    box-shadow: 0px 0px 0px 2px var(--orange);
+}
+
+.infosUser {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.nameUser {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.positionUser {
+    font-size: 12px;
+    opacity: 0.5;
 }

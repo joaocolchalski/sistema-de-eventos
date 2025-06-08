@@ -1,17 +1,17 @@
 'use client';
-import Image from 'next/image';
 import styles from './page.module.scss';
-import Logo from '/public/logo.svg';
-import ImageDecoration from '/public/image_decoration.svg';
+import Logo from '@/assets/logo.svg';
+import ImageDecoration from '@/assets/image_decoration.svg';
 import { Loader } from './components/Loader';
 import { useFormStatus } from 'react-dom';
 import { IoEyeOutline } from 'react-icons/io5';
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
     const { pending } = useFormStatus();
+    const router = useRouter();
     const [typeInputPassword, setTypeInputPassword] = useState('password');
 
     function handleLogin(formData: FormData) {
@@ -23,7 +23,7 @@ export default function Home() {
             return;
         }
 
-        redirect('/home/eventos');
+        router.push('/home/eventos');
     }
 
     function modifyTypeInputPassword() {
@@ -35,14 +35,8 @@ export default function Home() {
     return (
         <div className={styles.containerPage}>
             <main className={styles.containerContent}>
-                <section className={styles.leftContent}>
-                    <Image
-                        src={Logo}
-                        alt="Logo da empresa"
-                        priority={true}
-                        quality={100}
-                        className={styles.logo}
-                    />
+                <div className={styles.leftContent}>
+                    <Logo className={styles.logo} />
 
                     <h1 className={styles.title}>Bem-vindo de volta</h1>
                     <span className={styles.subtitle}>
@@ -50,7 +44,7 @@ export default function Home() {
                     </span>
 
                     <form action={handleLogin}>
-                        <section className={styles.inputContainer}>
+                        <div className={styles.inputContainer}>
                             <label
                                 htmlFor="email"
                                 className={styles.labelInput}
@@ -64,9 +58,9 @@ export default function Home() {
                                 placeholder="seuemail@seuservidor.com"
                                 className={styles.input}
                             />
-                        </section>
+                        </div>
 
-                        <section className={styles.inputContainer}>
+                        <div className={styles.inputContainer}>
                             <label
                                 htmlFor="password"
                                 className={styles.labelInput}
@@ -74,13 +68,13 @@ export default function Home() {
                                 Senha
                             </label>
 
-                            <div className={styles.inputWithIconContainer}>
+                            <div className={styles.inputPasswordContainer}>
                                 <input
                                     id="password"
                                     name="password"
                                     type={typeInputPassword}
                                     placeholder="Digite aqui"
-                                    className={styles.inputWithIcon}
+                                    className={styles.inputPassword}
                                 />
                                 <button
                                     className={styles.buttonVisibilityPassword}
@@ -90,23 +84,17 @@ export default function Home() {
                                     <IoEyeOutline size={26} />
                                 </button>
                             </div>
-                        </section>
+                        </div>
 
                         <button type="submit" className={styles.button}>
                             {pending ? <Loader /> : 'Enviar'}
                         </button>
                     </form>
-                </section>
-                <section className={styles.rightContent}>
-                    <Image
-                        src={ImageDecoration}
-                        alt="Imagem decorativa"
-                        className={styles.imageDecoration}
-                        priority={true}
-                        quality={100}
-                    />
+                </div>
+                <aside className={styles.rightContent}>
+                    <ImageDecoration className={styles.imageDecoration} />
                     <div className={styles.boxDecoration}></div>
-                </section>
+                </aside>
             </main>
         </div>
     );

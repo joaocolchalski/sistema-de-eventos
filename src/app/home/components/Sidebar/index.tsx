@@ -1,64 +1,74 @@
+'use client';
 import Image from 'next/image';
 import styles from './styles.module.scss';
-import Logo from '/public/logo.svg';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 import { RxDashboard } from 'react-icons/rx';
-import CalendarIcon from '/public/calendar_icon.svg';
-import TeamIcon from '/public/team_icon.svg';
-import InscriptionIcon from '/public/inscription_icon.svg';
-import ImageUser from '/public/image_user.jpeg';
-import UserIcon from '/public/user_icon.svg';
 import { PiPowerLight } from 'react-icons/pi';
+import Logo from '@/assets/logo.svg';
+import TeamIcon from '@/assets/team_icon.svg';
+import CalendarIcon from '@/assets/calendar_icon.svg';
+import InscriptionIcon from '@/assets/inscription_icon.svg';
+import ImageUser from '@/assets/image_user.png';
+import UserIcon from '@/assets/user_icon.svg';
 
 export default function Sidebar() {
+    const pathname = usePathname();
+    const router = useRouter();
+
+    function handleLogOut() {
+        router.push('/');
+    }
+
     return (
         <main className={styles.sidebarContainer}>
-            <Image
-                src={Logo}
-                alt="Logo da Empresa"
-                className={styles.logo}
-                quality={100}
-                priority={true}
-            />
+            <Logo className={styles.logo} />
 
             <span className={styles.titleMenu}>MENU</span>
-            <section className={styles.navigationContainer}>
-                <Link href={'/home'}>
+            <nav className={styles.navigationContainer}>
+                <Link
+                    href={'/home'}
+                    className={`${
+                        pathname === '/home' ? styles.actualRoute : ''
+                    }`}
+                >
                     <RxDashboard size={15} />
                     <span>Dashboard</span>
                 </Link>
-                <Link href={'/home/eventos'}>
-                    <Image
-                        src={CalendarIcon}
-                        alt="Ícone de Calendário"
-                        quality={100}
-                        priority={true}
-                    />
+                <Link
+                    href={'/home/eventos'}
+                    className={`${
+                        pathname === '/home/eventos' ? styles.actualRoute : ''
+                    }`}
+                >
+                    <CalendarIcon />
                     <span>Eventos</span>
                 </Link>
-                <Link href={'/home/equipes'}>
-                    <Image
-                        src={TeamIcon}
-                        alt="Ícone de Equipe"
-                        quality={100}
-                        priority={true}
-                    />
+                <Link
+                    href={'/home/equipes'}
+                    className={`${
+                        pathname === '/home/equipes' ? styles.actualRoute : ''
+                    }`}
+                >
+                    <TeamIcon />
                     <span>Equipes</span>
                 </Link>
-                <Link href={'/home/inscricoes'}>
-                    <Image
-                        src={InscriptionIcon}
-                        alt="Ícone de Inscrições"
-                        quality={100}
-                        priority={true}
-                    />
-                    <span>Dashboard</span>
+                <Link
+                    href={'/home/inscricoes'}
+                    className={`${
+                        pathname === '/home/inscricoes'
+                            ? styles.actualRoute
+                            : ''
+                    }`}
+                >
+                    <InscriptionIcon />
+                    <span>Inscrições</span>
                 </Link>
-            </section>
+            </nav>
 
             <div className={styles.divider}></div>
 
-            <section className={styles.userContainer}>
+            <div className={styles.userContainer}>
                 <div className={styles.infosUserContainer}>
                     <Image
                         src={ImageUser}
@@ -68,7 +78,7 @@ export default function Sidebar() {
                         className={styles.imageUser}
                     />
 
-                    <div>
+                    <div className={styles.infosUser}>
                         <span className={styles.nameUser}>Kaique Steck</span>
                         <span className={styles.positionUser}>
                             Administrador
@@ -76,16 +86,21 @@ export default function Sidebar() {
                     </div>
                 </div>
 
-                <Link href={'/home/editUser'}>
-                    <Image src={UserIcon} alt={'Ícone de Usuário'} />
+                <Link
+                    href={'/home/edituser'}
+                    className={`${
+                        pathname === '/home/edituser' ? styles.actualRoute : ''
+                    }`}
+                >
+                    <UserIcon />
                     <span>Alterar dados</span>
                 </Link>
 
-                <button type="button">
+                <button type="button" onClick={handleLogOut}>
                     <PiPowerLight size={15} />
                     <span>Sair</span>
                 </button>
-            </section>
+            </div>
         </main>
     );
 }
