@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
 import styles from './styles.module.scss';
-import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
+import LinkRoute from './components/LinkRoute';
+import { redirect } from 'next/navigation';
 import { RxDashboard } from 'react-icons/rx';
 import { PiPowerLight } from 'react-icons/pi';
 import Logo from '@/assets/logo.svg';
@@ -13,11 +13,8 @@ import ImageUser from '@/assets/image_user.png';
 import UserIcon from '@/assets/user_icon.svg';
 
 export default function Sidebar() {
-    const pathname = usePathname();
-    const router = useRouter();
-
     function handleLogOut() {
-        router.push('/');
+        redirect('/');
     }
 
     return (
@@ -26,44 +23,26 @@ export default function Sidebar() {
 
             <span className={styles.titleMenu}>MENU</span>
             <nav className={styles.navigationContainer}>
-                <Link
-                    href={'/home'}
-                    className={`${
-                        pathname === '/home' ? styles.actualRoute : ''
-                    }`}
-                >
-                    <RxDashboard size={15} />
-                    <span>Dashboard</span>
-                </Link>
-                <Link
-                    href={'/home/eventos'}
-                    className={`${
-                        pathname === '/home/eventos' ? styles.actualRoute : ''
-                    }`}
-                >
-                    <CalendarIcon />
-                    <span>Eventos</span>
-                </Link>
-                <Link
-                    href={'/home/equipes'}
-                    className={`${
-                        pathname === '/home/equipes' ? styles.actualRoute : ''
-                    }`}
-                >
-                    <TeamIcon />
-                    <span>Equipes</span>
-                </Link>
-                <Link
-                    href={'/home/inscricoes'}
-                    className={`${
-                        pathname === '/home/inscricoes'
-                            ? styles.actualRoute
-                            : ''
-                    }`}
-                >
-                    <InscriptionIcon />
-                    <span>Inscrições</span>
-                </Link>
+                <LinkRoute
+                    route="/home"
+                    icon={<RxDashboard size={15} />}
+                    nameRoute="Dashboard"
+                />
+                <LinkRoute
+                    route="/home/eventos"
+                    icon={<CalendarIcon />}
+                    nameRoute="Eventos"
+                />
+                <LinkRoute
+                    route="/home/equipes"
+                    icon={<TeamIcon />}
+                    nameRoute="Equipes"
+                />
+                <LinkRoute
+                    route="/home/inscricoes"
+                    icon={<InscriptionIcon />}
+                    nameRoute="Inscrições"
+                />
             </nav>
 
             <div className={styles.divider}></div>
@@ -86,15 +65,11 @@ export default function Sidebar() {
                     </div>
                 </div>
 
-                <Link
-                    href={'/home/edituser'}
-                    className={`${
-                        pathname === '/home/edituser' ? styles.actualRoute : ''
-                    }`}
-                >
-                    <UserIcon />
-                    <span>Alterar dados</span>
-                </Link>
+                <LinkRoute
+                    route="/home/edituser"
+                    icon={<UserIcon />}
+                    nameRoute="Alterar dados"
+                />
 
                 <button type="button" onClick={handleLogOut}>
                     <PiPowerLight size={15} />

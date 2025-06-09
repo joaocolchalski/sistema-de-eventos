@@ -1,8 +1,37 @@
 import TitlePage from '../components/TitlePage';
+import InputSearch from './components/InputSearch';
+import TableEvents from './components/TableEvents';
 import styles from './styles.module.scss';
-import { IoIosAdd, IoIosSearch } from 'react-icons/io';
+import { IoIosAdd } from 'react-icons/io';
 
 export default function Eventos() {
+    const eventos = [
+        {
+            id: 1,
+            name: 'Clube do Laço Coração Pantaneiro',
+            total_equipes: 10,
+            status: true,
+            data_inicio: '09/06/2025',
+            data_fim: '11/06/2025',
+        },
+        {
+            id: 2,
+            name: 'Clube do Laço Coração Pantaneiro',
+            total_equipes: 10,
+            status: true,
+            data_inicio: '09/06/2025',
+            data_fim: '11/06/2025',
+        },
+    ];
+
+    const nameEvents: string[] = [];
+
+    eventos.forEach((evento) => {
+        if (!nameEvents.includes(evento.name)) {
+            nameEvents.push(evento.name);
+        }
+    });
+
     return (
         <main>
             <div className={styles.greetingContainer}>
@@ -14,35 +43,18 @@ export default function Eventos() {
 
             <div className={styles.eventsContainer}>
                 <div className={styles.searchAndAddEventContainer}>
-                    <div className={styles.inputSearchContainer}>
-                        <input
-                            className={styles.inputSearch}
-                            placeholder="Buscar eventos"
-                            type="text"
-                            name="searchEvent"
-                        />
-                        <button type="button" className={styles.buttonSearch}>
-                            <IoIosSearch size={20} />
+                    <div className={styles.searchC}>
+                        <InputSearch options={nameEvents} />
+                    </div>
+                    <div>
+                        <button className={styles.buttonAddEvent}>
+                            <IoIosAdd size={20} />
+                            <span>Inserir Novo</span>
                         </button>
                     </div>
-
-                    <button className={styles.buttonAddEvent}>
-                        <IoIosAdd size={26} />
-                        <span>Inserir Novo</span>
-                    </button>
                 </div>
 
-                {/* <table className={styles.tableContainer}>
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                </table> */}
+                <TableEvents events={eventos} />
             </div>
         </main>
     );

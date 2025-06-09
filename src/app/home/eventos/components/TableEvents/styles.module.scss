@@ -1,0 +1,51 @@
+.tableContainer {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    text-align: start;
+    padding: 12px 0;
+    font-weight: 500;
+    font-size: 13px;
+    color: rgba(#cc6237, 0.5);
+    border-bottom: 1px solid rgba(#cc6237, 0.1);
+}
+
+.tableData {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 25%;
+    padding: 12px 0;
+    font-size: 12px;
+    color: var(--gray);
+    border-bottom: 1px solid rgba(#cc6237, 0.1);
+}
+
+.statusContainer {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+
+    .activeDot {
+        color: var(--green);
+    }
+
+    .inactiveDot {
+        color: var(--red);
+    }
+}
+
+.buttonOptionsContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 17px;
+}
+
+.buttonOptions {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: var(--orange);
+}
