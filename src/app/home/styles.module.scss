@@ -15,4 +15,11 @@
 .contentContainer {
     flex: 1;
     padding: 30px;
+    background-color: var(--white-800);
+}
+
+@media (max-width: 900px) {
+    .contentContainer {
+        padding: 45px 30px 30px 30px;
+    }
 }

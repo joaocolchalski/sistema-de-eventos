@@ -1,0 +1,27 @@
+.button {
+    display: none;
+    align-items: center;
+    border: 0;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--orange);
+    color: var(--white-900);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.sidebarShow {
+    left: 219px;
+}
+
+@media (max-width: 900px) {
+    .button {
+        display: flex;
+    }
+}

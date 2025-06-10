@@ -1,10 +1,11 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TitlePage from '../components/TitlePage';
 import InputSearch from './components/InputSearch';
 import TableEvents from './components/TableEvents';
 import styles from './styles.module.scss';
 import { IoIosAdd } from 'react-icons/io';
+import { Event } from '@/@types/global';
 
 export default function Eventos() {
     const eventos = [
@@ -50,6 +51,42 @@ export default function Eventos() {
         },
     ];
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [searchEventValue, setSearchEventValue] = useState('');
+    const [totalPages, setTotalPages] = useState(0);
+    const [paginatedEvents, setPaginatedEvents] = useState<Event[]>([]);
+
+    useEffect(() => {
+        function padinatedEvents() {
+            const search: Event[] = [];
+
+            eventos.forEach((evento) => {
+                if (searchEventValue.trim().length > 0) {
+                    if (evento.name.includes(searchEventValue)) {
+                        search.push(evento);
+                        return;
+                    }
+                    return;
+                }
+
+                search.push(evento);
+            });
+
+            console.log(search);
+
+            const itemsPerPage = 2;
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            setPaginatedEvents(search.slice(startIndex, endIndex));
+            setTotalPages(Math.ceil(search.length / itemsPerPage));
+        }
+
+        padinatedEvents();
+
+        return () => padinatedEvents();
+    }, [currentPage, searchEventValue]);
+
     const nameEvents: string[] = [];
 
     eventos.forEach((evento) => {
@@ -57,15 +94,6 @@ export default function Eventos() {
             nameEvents.push(evento.name);
         }
     });
-
-    const itemsPerPage = 2;
-    const [currentPage, setCurrentPage] = useState(1);
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const paginatedEvents = eventos.slice(startIndex, endIndex);
-
-    const totalPages = Math.ceil(eventos.length / itemsPerPage);
 
     return (
         <main>
@@ -78,10 +106,14 @@ export default function Eventos() {
 
             <div className={styles.eventsContainer}>
                 <div className={styles.searchAndAddEventContainer}>
-                    <div className={styles.searchC}>
-                        <InputSearch options={nameEvents} />
+                    <div className={styles.searchContainer}>
+                        <InputSearch
+                            options={nameEvents}
+                            setSearchEventValue={setSearchEventValue}
+                            setCurrentPage={setCurrentPage}
+                        />
                     </div>
-                    <div>
+                    <div className={styles.buttonAddEventContainer}>
                         <button className={styles.buttonAddEvent}>
                             <IoIosAdd size={20} />
                             <span>Inserir Novo</span>
@@ -123,7 +155,10 @@ export default function Eventos() {
                                 Math.min(prev + 1, totalPages)
                             )
                         }
-                        disabled={currentPage === totalPages}
+                        disabled={
+                            currentPage === totalPages ||
+                            currentPage > totalPages
+                        }
                     >
                         Próxima
                     </button>

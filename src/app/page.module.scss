@@ -138,6 +138,16 @@
     flex: 1;
 }
 
+@media (max-width: 900px) {
+    .rightContent {
+        display: none;
+    }
+
+    .leftContent {
+        flex: 1;
+    }
+}
+
 .imageDecoration {
     position: absolute;
     left: 0;
@@ -150,3 +160,15 @@
     border-radius: 20px;
     margin-left: 42px;
 }
+
+// @media (max-width: 720px) {
+//     html {
+//         font-size: 87.5%;
+//     }
+// }
+
+// @media (max-width: 1080px) {
+//     html {
+//         font-size: 93.75%;
+//     }
+// }

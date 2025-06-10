@@ -5,3 +5,12 @@ declare module '*.svg' {
     >;
     export default ReactComponent;
 }
+
+export interface Event {
+    id: number;
+    name: string;
+    total_equipes: number;
+    status: boolean;
+    data_inicio: string;
+    data_fim: string;
+}

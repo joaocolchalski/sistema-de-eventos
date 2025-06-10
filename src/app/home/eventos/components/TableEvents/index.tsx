@@ -3,19 +3,11 @@ import { intervalDateString } from '@/app/lib/helper';
 import styles from './styles.module.scss';
 import DotStatus from '@/assets/dot_status.svg';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { IoEyeOutline } from 'react-icons/io5';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { LuPencil } from 'react-icons/lu';
-
-interface Event {
-    id: number;
-    name: string;
-    total_equipes: number;
-    status: boolean;
-    data_inicio: string;
-    data_fim: string;
-}
+import { Event } from '@/@types/global';
 
 interface ComponentProps {
     events: Event[];
@@ -102,6 +94,9 @@ export default function TableEvents({ events }: ComponentProps) {
                                         className={styles.menuOptions}
                                     >
                                         <button
+                                            onClick={() =>
+                                                toggleMenu(evento.id)
+                                            }
                                             type="button"
                                             className={styles.menuItem}
                                         >
@@ -109,6 +104,9 @@ export default function TableEvents({ events }: ComponentProps) {
                                             <span>Visualizar</span>
                                         </button>
                                         <button
+                                            onClick={() =>
+                                                toggleMenu(evento.id)
+                                            }
                                             type="button"
                                             className={styles.menuItem}
                                         >
@@ -116,6 +114,9 @@ export default function TableEvents({ events }: ComponentProps) {
                                             <span>Editar</span>
                                         </button>
                                         <button
+                                            onClick={() =>
+                                                toggleMenu(evento.id)
+                                            }
                                             type="button"
                                             className={styles.menuItemRemove}
                                         >

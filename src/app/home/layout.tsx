@@ -3,10 +3,10 @@ import Sidebar from './components/Sidebar';
 import styles from './styles.module.scss';
 
 export const metadata: Metadata = {
-    title: 'Home - Tropa Digital',
+    title: 'Dashboard - Tropa Digital',
     description: 'Plataforma de Eventos da Tropa Digital',
     icons: {
-        icon: '/logo.svg',
+        icon: '/favicon.svg',
     },
 };
 

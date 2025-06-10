@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Login - Tropa Digital',
     description: 'Plataforma de Eventos da Tropa Digital',
     icons: {
-        icon: '/logo.svg',
+        icon: '/favicon.svg',
     },
 };
 

@@ -27,6 +27,13 @@
     padding: 12px 0;
 }
 
+.searchContainer {
+    position: relative;
+    background-color: #09428f;
+    width: 100%;
+    max-width: 203px;
+}
+
 .buttonAddEvent {
     display: flex;
     align-items: center;
@@ -39,6 +46,7 @@
     font-size: 13px;
     font-weight: 600;
     transition: transform 0.2s ease-in-out;
+    white-space: nowrap;
 
     &:hover {
         transform: scale(1.02);

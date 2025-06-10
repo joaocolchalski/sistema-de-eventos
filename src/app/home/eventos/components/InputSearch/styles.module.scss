@@ -1,7 +1,13 @@
+.componentContainer {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 100%;
+}
+
 .container {
     position: relative;
-    width: 100%;
-    max-width: 203px;
     border-radius: 33px;
     transition: all 0.1s ease-in-out;
 }
