@@ -11,9 +11,9 @@ Sistema para Controle de Eventos. Permite adicionar, editar, remover e pesquisar
 
 ## ⚙️ Funcionalidades
 
-- ✅ Adicionar novos eventos
-- ✅ Editar eventos existentes
-- ✅ Remover eventos
+- ⏳ Adicionar novos eventos (em desenvolvimento)
+- ⏳ Editar eventos existentes (em desenvolvimento)
+- ⏳ Remover eventos (em desenvolvimento)
 - ✅ Buscar eventos por nome
 - ✅ Paginação dos eventos
 
