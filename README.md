@@ -37,4 +37,4 @@ npm run dev
 
 ## 👨‍💻 Autor
 Desenvolvido por João Cleber Colchalski
-• [LinkedIn](https://www.linkedin.com/in/joao-cleber-colchalski/)
+- [LinkedIn](https://www.linkedin.com/in/joao-cleber-colchalski/)
