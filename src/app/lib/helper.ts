@@ -1,6 +1,5 @@
 import { format, parse } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ReactNode } from 'react';
 
 interface FunctionProps {
     data_inicio: string;
@@ -16,7 +15,7 @@ export function intervalDateString({ data_inicio, data_fim }: FunctionProps) {
 
     const diaInicio = format(inicio, 'dd');
     const diaFim = format(fim, 'dd');
-    const mesInicio = format(fim, 'MMMM', { locale: ptBR });
+    const mesInicio = format(inicio, 'MMMM', { locale: ptBR });
     const mesFim = format(fim, 'MMMM', { locale: ptBR });
 
     if (mesInicio === mesFim) {

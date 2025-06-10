@@ -1,7 +1,12 @@
+'use client';
 import { intervalDateString } from '@/app/lib/helper';
 import styles from './styles.module.scss';
 import DotStatus from '@/assets/dot_status.svg';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
+import { useState, useEffect, useRef } from 'react';
+import { IoEyeOutline } from 'react-icons/io5';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { LuPencil } from 'react-icons/lu';
 
 interface Event {
     id: number;
@@ -17,6 +22,31 @@ interface ComponentProps {
 }
 
 export default function TableEvents({ events }: ComponentProps) {
+    const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+
+            // Fecha se o clique não foi dentro de um botão/menu
+            if (
+                !target.closest('[data-menu]') &&
+                !target.closest('[data-menu-trigger]')
+            ) {
+                setOpenMenuId(null);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
+    const toggleMenu = (id: number) => {
+        setOpenMenuId((prev) => (prev === id ? null : id));
+    };
+
     return (
         <table className={styles.tableContainer}>
             <thead className={styles.tableHead}>
@@ -55,14 +85,45 @@ export default function TableEvents({ events }: ComponentProps) {
                                 data_fim: evento.data_fim,
                             })}
                         </td>
-                        <td className={styles.tableData}>
+                        <td className={styles.tableDataButton}>
                             <div className={styles.buttonOptionsContainer}>
                                 <button
+                                    data-menu-trigger
                                     type="button"
                                     className={styles.buttonOptions}
+                                    onClick={() => toggleMenu(evento.id)}
                                 >
                                     <HiOutlineDotsVertical size={17} />
                                 </button>
+
+                                {openMenuId === evento.id && (
+                                    <div
+                                        data-menu
+                                        className={styles.menuOptions}
+                                    >
+                                        <button
+                                            type="button"
+                                            className={styles.menuItem}
+                                        >
+                                            <IoEyeOutline size={16} />
+                                            <span>Visualizar</span>
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className={styles.menuItem}
+                                        >
+                                            <LuPencil size={16} />
+                                            <span>Editar</span>
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className={styles.menuItemRemove}
+                                        >
+                                            <FaRegTrashAlt size={16} />
+                                            <span>Excluir</span>
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </td>
                     </tr>
